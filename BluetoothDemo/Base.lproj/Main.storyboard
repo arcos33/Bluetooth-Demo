@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Searching View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SearchingViewController" customModule="BluetoothDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Searching" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TwH-2O-i35">
+                                <rect key="frame" x="177" y="304" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="Ra6-kM-Zv9"/>
+                                    <constraint firstAttribute="height" constant="48" id="Uo2-Ov-3xT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for HR monitor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCa-uv-6Un">
+                                <rect key="frame" x="177" y="362" width="414" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="bRL-HP-ulA"/>
+                                    <constraint firstAttribute="height" constant="20" id="gQG-41-kVn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waiting_image" translatesAutoresizingMaskIntoConstraints="NO" id="1pI-LD-5GN">
+                                <rect key="frame" x="275" y="500.5" width="218.5" height="43.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43.5" id="AUs-qQ-UlX"/>
+                                    <constraint firstAttribute="width" constant="218.5" id="NIP-89-LxP"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn Bluetooth on!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKp-Rx-gMG">
+                                <rect key="frame" x="177" y="974" width="414" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Hjf-LJ-6lz"/>
+                                    <constraint firstAttribute="width" constant="414" id="nV3-Gb-2XK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="polar-logo-png-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="Faz-qH-vhQ">
+                                <rect key="frame" x="264" y="46" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="5cf-GS-EFe"/>
+                                    <constraint firstAttribute="height" constant="128" id="Jch-9G-GEz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="TwH-2O-i35" firstAttribute="top" secondItem="Faz-qH-vhQ" secondAttribute="bottom" constant="130" id="1I9-Sh-jKf"/>
+                            <constraint firstItem="1pI-LD-5GN" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="D5O-0c-1XV"/>
+                            <constraint firstItem="Faz-qH-vhQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="26" id="DMG-Ng-LHf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YKp-Rx-gMG" secondAttribute="bottom" constant="30" id="JrU-rf-o1h"/>
+                            <constraint firstItem="Faz-qH-vhQ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RNe-co-MOA"/>
+                            <constraint firstItem="1pI-LD-5GN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="SFb-bk-u3u"/>
+                            <constraint firstItem="MCa-uv-6Un" firstAttribute="top" secondItem="TwH-2O-i35" secondAttribute="bottom" constant="10" id="jTS-RV-ahS"/>
+                            <constraint firstItem="YKp-Rx-gMG" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lxX-qc-bqj"/>
+                            <constraint firstItem="TwH-2O-i35" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m5z-9Z-12N"/>
+                            <constraint firstItem="MCa-uv-6Un" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="siO-mE-lrz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="oqg-xX-pU2" kind="show" identifier="SearchView-&gt;MonitorFound" id="2Bd-fw-IXM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="19"/>
+        </scene>
+        <!--Connection Status View Controller-->
+        <scene sceneID="48c-W7-5P1">
+            <objects>
+                <viewController id="oqg-xX-pU2" customClass="ConnectionStatusViewController" customModule="BluetoothDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fj6-VJ-6hc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79n-Uw-0Ba">
+                                <rect key="frame" x="177" y="498" width="414" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="E8u-Fd-kJf"/>
+                                    <constraint firstAttribute="width" constant="414" id="QV1-YX-mfS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83216959239999999" green="0.98548370600000001" blue="0.47333085539999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="79n-Uw-0Ba" firstAttribute="centerX" secondItem="QyJ-XF-0AS" secondAttribute="centerX" id="vAk-sq-yVb"/>
+                            <constraint firstItem="79n-Uw-0Ba" firstAttribute="centerY" secondItem="QyJ-XF-0AS" secondAttribute="centerY" id="wpA-eK-Iyw"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QyJ-XF-0AS"/>
+                    </view>
+                    <connections>
+                        <segue destination="act-Oj-GDm" kind="show" identifier="monitorFound-&gt;HeartBeat" id="nsw-AX-33p"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J0h-jW-zCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1127" y="19"/>
+        </scene>
+        <!--Heart Beat View Controller-->
+        <scene sceneID="aQU-yp-JX1">
+            <objects>
+                <viewController id="act-Oj-GDm" customClass="HeartBeatViewController" customModule="BluetoothDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WEz-8M-U0G">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-dJ-PhJ">
+                                <rect key="frame" x="225.5" y="444.5" width="317" height="155.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fIc-dJ-PhJ" secondAttribute="height" multiplier="49:24" id="Bhy-Cd-HxE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="130"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bpm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7g-yd-t87">
+                                <rect key="frame" x="425.5" y="399.5" width="72" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="y7g-yd-t87" secondAttribute="height" multiplier="8:5" id="Ab8-gH-Cus"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="z3Y-Rx-afZ">
+                                <rect key="frame" x="310" y="772" width="148.5" height="165"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PNp-d9-20d">
+                                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmc-z0-0PG">
+                                        <rect key="frame" x="57.5" y="68" width="33" height="97"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="81"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heartbeat" translatesAutoresizingMaskIntoConstraints="NO" id="tlT-c6-Oil">
+                                <rect key="frame" x="0.0" y="35" width="768" height="308"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="tlT-c6-Oil" secondAttribute="height" multiplier="182:73" id="aWI-UW-0Gu"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bHq-ce-tk4">
+                                <rect key="frame" x="130" y="879" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="disconnectTapped:" destination="act-Oj-GDm" eventType="touchUpInside" id="FoU-Iq-vfj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z3Y-Rx-afZ" firstAttribute="centerX" secondItem="ftn-sz-mhi" secondAttribute="centerX" id="4BI-qA-a8S"/>
+                            <constraint firstAttribute="trailing" secondItem="tlT-c6-Oil" secondAttribute="trailing" id="LK0-UC-wZ1"/>
+                            <constraint firstItem="y7g-yd-t87" firstAttribute="top" secondItem="ftn-sz-mhi" secondAttribute="top" constant="379.5" id="S80-JR-Mi6"/>
+                            <constraint firstItem="tlT-c6-Oil" firstAttribute="top" secondItem="ftn-sz-mhi" secondAttribute="top" constant="15" id="byl-Jd-iSt"/>
+                            <constraint firstItem="fIc-dJ-PhJ" firstAttribute="centerY" secondItem="ftn-sz-mhi" secondAttribute="centerY" id="cxr-ML-ffm"/>
+                            <constraint firstItem="fIc-dJ-PhJ" firstAttribute="centerX" secondItem="ftn-sz-mhi" secondAttribute="centerX" id="d4b-fE-uGw"/>
+                            <constraint firstItem="tlT-c6-Oil" firstAttribute="leading" secondItem="WEz-8M-U0G" secondAttribute="leading" id="myW-dD-dU9"/>
+                            <constraint firstItem="ftn-sz-mhi" firstAttribute="bottom" secondItem="z3Y-Rx-afZ" secondAttribute="bottom" constant="87" id="yp2-Bc-Env"/>
+                            <constraint firstItem="ftn-sz-mhi" firstAttribute="trailing" secondItem="y7g-yd-t87" secondAttribute="trailing" constant="270.5" id="zeL-jY-55X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ftn-sz-mhi"/>
+                    </view>
+                    <connections>
+                        <outlet property="heartbeat_imageView" destination="tlT-c6-Oil" id="Ixt-td-ckE"/>
+                        <outlet property="hr_Label" destination="fIc-dJ-PhJ" id="qTX-ah-X9R"/>
+                        <outlet property="sensorLocation_Label" destination="pmc-z0-0PG" id="zj4-UH-PMq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6TT-GD-jN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1822.65625" y="22.8515625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="heartbeat" width="4664.5" height="3525"/>
+        <image name="polar-logo-png-transparent" width="1165" height="395"/>
+        <image name="waiting_image" width="236.5" height="43.5"/>
+    </resources>
+</document>
