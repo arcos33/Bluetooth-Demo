@@ -35,4 +35,7 @@ Grand Central Dispatch https://developer.apple.com/documentation/DISPATCH
 
 ## Removing bluetooth monitor
 
+**This functionality is still being implemented. It is not working yet.**
+
 The app is checking for a heartbeat continuously. If it stops detecting a heartrate for more than 10 seconds the navigation controller will pop both views and show the root view (Searching view). 
+
