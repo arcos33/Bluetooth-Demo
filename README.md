@@ -19,7 +19,7 @@ Grand Central Dispatch https://developer.apple.com/documentation/DISPATCH
 
 ### **Polar H7**, **Polar H10**
 
-![H10](/Users/user/Documents/iOS Projects/Projects/BluetoothDemo/ReadMe/image_2.png)
+![H10](ReadMe/image_2.png)
 
 ## Flow
 
