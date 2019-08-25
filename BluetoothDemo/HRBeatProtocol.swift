@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol HRBeatProtocol {
+protocol HRBeatProtocol: class {
     func didStopReceivingHeartbeat()
 }

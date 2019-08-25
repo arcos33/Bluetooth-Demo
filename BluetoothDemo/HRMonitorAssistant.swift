@@ -43,7 +43,8 @@ struct HRMonitorAssistant {
     
     static func shouldContinueMonitoring(heartRate: NSDate, frequency: Int) -> Bool {
         let elapsed = NSDate().timeIntervalSince(heartRate as Date)
-        if elapsed.timeInSeconds >= frequency {
+        let elapsedInt = Int(elapsed)
+        if elapsedInt >= frequency {
             return false
         }
         else {

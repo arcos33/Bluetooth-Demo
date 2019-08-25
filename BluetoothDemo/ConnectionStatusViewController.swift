@@ -11,6 +11,7 @@ import CoreBluetooth
 
 class ConnectionStatusViewController: UIViewController {
     var sensorLocation: String?
+    var delegate: HRBeatProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,22 +19,29 @@ class ConnectionStatusViewController: UIViewController {
     }
     
     @objc private func receivedNotification(_ notification: Notification) {
-        if let sensorLoc = notification.userInfo?["data"] as? String {
-            sensorLocation = sensorLoc
-            performSegue(withIdentifier: SegueNames.monitorFoundToHeartBeat.rawValue, sender: self)
+        DispatchQueue.main.async { [weak self] in
+            
+            if let sensorLoc = notification.userInfo?["data"] as? String {
+                self?.sensorLocation = sensorLoc
+                self?.performSegue(withIdentifier: SegueNames.monitorFoundToHeartBeat.rawValue, sender: self)
+            }
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let heartbeatVC = segue.destination as? HeartBeatViewController {
-            heartbeatVC.sensorLocation = sensorLocation
+            //heartbeatVC.sensorLocation = sensorLocation
             heartbeatVC.delegate = self
         }
     }
 }
 
+//  ==============================================================================
+//  HeartBeat Delegate
+//  ==============================================================================
 extension ConnectionStatusViewController: HRBeatProtocol {
     func didStopReceivingHeartbeat() {
+        delegate?.didStopReceivingHeartbeat()
         self.navigationController?.popViewController(animated: true)
     }
 }

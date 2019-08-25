@@ -75,6 +75,14 @@ extension SearchingViewController: CBCentralManagerDelegate {
         centralManager.connect(connectedPeripheral)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SegueNames.searchViewToMonitorFound.rawValue {
+            if let connectionView = segue.destination as? ConnectionStatusViewController {
+                connectionView.delegate = self
+            }
+        }
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService,
                     error: Error?) {
         
@@ -132,6 +140,14 @@ extension SearchingViewController {
         guard let centralManager = centralManager else { return }
         centralManager.scanForPeripherals(withServices: [heartRateServiceUUID])
     }
+}
+
+extension SearchingViewController: HRBeatProtocol {
+    func didStopReceivingHeartbeat() {
+        scanForAvailableMonitors()
+    }
+    
+    
 }
 
 

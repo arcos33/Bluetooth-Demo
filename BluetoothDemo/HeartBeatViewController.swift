@@ -13,14 +13,35 @@ enum TextStatus: Int {
     case textPresent
 }
 
+enum HRStatus {
+    case waitingToReceiveHR
+    case startedReceivingHR
+    case stoppedReceivingHR
+}
+
 class HeartBeatViewController: UIViewController {
     
     var sensorLocation: String?
-    var date = NSDate()
-    private var lastHeartbeat: NSDate?
-    let stopBeatingFrequency = 3
-    var delegate: HRBeatProtocol?
-    var timer = Timer()
+    //private var lastHeartbeatTimeStamp: NSDate?
+    //let stopBeatingFrequency = 3
+    weak var delegate: HRBeatProtocol?
+    //var timer = Timer()
+    var status: HRStatus {
+        didSet {
+            switch status {
+            case .waitingToReceiveHR:
+                print("receiving data")
+                setUIwaitingToReceiveHR()
+            case .startedReceivingHR:
+                print("receiving data with heartbeat")
+                setUIstartedReceivingHR()
+            case .stoppedReceivingHR:
+                setUIStoppedRecevingHR()
+                print("stopped")
+                
+            }
+        }
+    }
     
     @IBOutlet weak var heartbeat_imageView: UIImageView!
     @IBOutlet weak var sensorLocation_Label: UILabel!
@@ -30,56 +51,91 @@ class HeartBeatViewController: UIViewController {
         
         super.viewDidLoad()
         
-        lastHeartbeat = NSDate()
+        status = .waitingToReceiveHR
+        
+        //lastHeartbeatTimeStamp = NSDate()
         
         sensorLocation_Label.text = sensorLocation
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedHeartBeat), name: .didReceiveHeartBeat, object: nil)
         
-        scheduledTimerWithInterval()
+        //scheduledTimerWithInterval()
     }
     
-    private func scheduledTimerWithInterval() {
-        timer = Timer.scheduledTimer(withTimeInterval: Double(stopBeatingFrequency), repeats: true, block: { (_) in
-            self.checkHR()
-        })
+    required init?(coder aDecoder: NSCoder) {
+        status = .waitingToReceiveHR
+
+        super.init(coder: aDecoder)
     }
     
+//    private func scheduledTimerWithInterval() {
+//        timer = Timer.scheduledTimer(withTimeInterval: Double(stopBeatingFrequency), repeats: true, block: { [weak self] (_) in
+//            self?.checkHR()
+//        })
+//    }
     
-    private func checkHR() {
-        print("CheckHR called")
-        if let hr = lastHeartbeat {
-            let elapsedTime = NSDate().timeIntervalSince(hr as Date)
-            print(elapsedTime.timeInSeconds)
-            if HRMonitorAssistant.shouldContinueMonitoring(heartRate: hr, frequency: stopBeatingFrequency) == false {
-                
-                navigationController?.popViewController(animated: true)
-                
-                delegate?.didStopReceivingHeartbeat()
-            }
-        }
-    }
+//    private func checkHR() {
+//        if let hr = lastHeartbeatTimeStamp {
+//            if HRMonitorAssistant.shouldContinueMonitoring(heartRate: hr, frequency: stopBeatingFrequency) == false {
+//                delegate?.didStopReceivingHeartbeat()
+//
+//                navigationController?.popViewController(animated: true)
+//            }
+//        }
+//    }
     
     @objc private func receivedHeartBeat(_ notification: Notification) {
+        
         if let hr = notification.userInfo?["data"] as? Int {
-            
-            lastHeartbeat = NSDate()
-            
+            //lastHeartbeatTimeStamp = NSDate()
+
+            if hr == 0 {
+                print("Heart rate is 0")
+                if status == .startedReceivingHR {
+                    status = .stoppedReceivingHR
+                }
+                return
+            }
+            print("Received HR: \(hr)")
+            //print("lastHeartRateTimeStamp: \(lastHeartbeatTimeStamp)")
+            status = .startedReceivingHR
             hr_Label.text = String(hr)
             
             if hr_Label.text!.isEmpty {
-                
+
                 heartbeat_imageView.isHidden = false
-                
+
             } else {
-                
+
                 heartbeat_imageView.isHidden = true
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
-                    
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.10) { [weak self] in
+
                     self?.heartbeat_imageView.isHidden = false
                 }
             }
         }
+    }
+    
+    deinit {
+        print("deinit called")
+    }
+}
+
+//  ==============================================================================
+//  Private Methods
+//  ==============================================================================
+extension HeartBeatViewController {
+    private func setUIwaitingToReceiveHR() {
+        heartbeat_imageView.image = UIImage(imageLiteralResourceName: "waiting_for_heartbeat")
+    }
+    
+    private func setUIstartedReceivingHR() {
+        heartbeat_imageView.image = UIImage(imageLiteralResourceName: "heartbeat")
+    }
+    
+    private func setUIStoppedRecevingHR() {
+        delegate?.didStopReceivingHeartbeat()
+        navigationController?.popViewController(animated: true)
     }
 }
