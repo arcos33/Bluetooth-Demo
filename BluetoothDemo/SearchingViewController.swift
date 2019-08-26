@@ -26,6 +26,7 @@ class SearchingViewController: UIViewController {
     
     var connectedPeripheral: CBPeripheral!
     var centralManager: CBCentralManager?
+    var acceptableHRHasBeenReceived = false
     
     //  ==============================================================================
     //  Lifecycle
@@ -64,15 +65,15 @@ extension SearchingViewController: CBCentralManagerDelegate {
             fatalError()
         }
     }
-
+    
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral)
+        print("peripheral: \(peripheral)")
         guard let centralManager = centralManager else { return }
-        performSegue(withIdentifier: SegueNames.searchViewToMonitorFound.rawValue, sender: self)
         connectedPeripheral = peripheral
-        
         centralManager.stopScan()
         centralManager.connect(connectedPeripheral)
+        performSegue(withIdentifier: SegueNames.searchViewToMonitorFound.rawValue, sender: self)
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -124,6 +125,8 @@ extension SearchingViewController: CBPeripheralDelegate {
                     error: Error?) {
         if characteristic.uuid.uuidString == measurementCharacteristicUUID.uuidString {
             let hr = HRMonitorAssistant.heartRate(from: characteristic)
+            // The sensor will give a 0 heart rate for around 10 seconds.
+            print("HR: \(hr)")
             NotificationCenter.default.post(name: .didReceiveHeartBeat, object: nil, userInfo: ["data": hr])
         } else if characteristic.uuid.uuidString == bodySensorLocationCharacteristicCBUUID.uuidString {
             let bodyLoc = HRMonitorAssistant.bodyLocation(from: characteristic)
@@ -142,8 +145,12 @@ extension SearchingViewController {
     }
 }
 
+//  ==============================================================================
+//  HRBeatDelegate Methods
+//  ==============================================================================
 extension SearchingViewController: HRBeatProtocol {
     func didStopReceivingHeartbeat() {
+        centralManager?.cancelPeripheralConnection(connectedPeripheral)
         scanForAvailableMonitors()
     }
     

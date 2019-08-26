@@ -25,17 +25,11 @@ Grand Central Dispatch https://developer.apple.com/documentation/DISPATCH
 
 1. The app will start on the "Searching" view. It'll stay there until a HR monitor is detected.
 
-2. The user holds an HR monitor and waits perhaps 5 seconds at most for the iOS device to find the peripheral.
+2. Once a monitor has been found, the navigation controller will push the "Monitor Found" view on to the stack. That view will persist until a valid heart rate starts coming through. From my testing I can confirm that it pushes a heart rate of 0 for the first 10 seconds, then it will start pushing the actual heart rate.
 
-3. Once found, the navigation controller will push the "Monitor Found" view on to the stack. That view will persist until the "body location" data is received from the bluetooth monitor.
+3. Once that a valid heart rate is received the navigation controller will push the "HeartRate" view on to the stack and the heart image will start pulsating with the users heartbeat.
 
-4. Once that data is received the navigation controller will push the "HeartRate" view on to the stack and the heart image will start pulsating with the users heartbeat.
+## No signal
 
-5. The heartrate will be 000 bpm until the delegate starts receiving information (ususally 5-10 seconds).
-
-## Removing bluetooth monitor
-
-**\**This functionality is still being implemented. It is not working yet.**
-
-The app is checking for a heartbeat continuously. If it stops detecting a heartrate for more than 10 seconds the navigation controller will pop both views and show the root view (Searching view). 
+The app is checking for a heartbeat continuously. If it stops detecting a heartrate the navigation controller will pop both views using delegation and show the root view (Searching view). 
 
