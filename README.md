@@ -3,8 +3,11 @@ This is a demo to demonstrate how to get a heart rate from a Polar Monitor.
 
 ![Screenshot_1](ReadMe/screenshot_1.png)
 
-## Compatible devices
-**iPad** in portrait orientation.
+## Compatability
+Swift ver: **Swift 5**
+deployment target: **iOS 12.4**
+device: **iPad**
+orientation: **Portrait**
 At the time I only had an iPad available for development and testing.
 
 ## Technologies
